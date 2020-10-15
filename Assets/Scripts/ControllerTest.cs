@@ -10,6 +10,12 @@ public class ControllerTest : MonoBehaviour
     public GameObject gripObj;
     public GameObject menuObj;
 
+    //Directions
+    public GameObject rightObj;
+    public GameObject leftObj;
+    public GameObject upObj;
+    public GameObject downObj;
+
     private void Update()
     {
         //grip
@@ -44,6 +50,54 @@ public class ControllerTest : MonoBehaviour
         {
             changetexture(triggerObj, IdleMat);
         }
+
+        #region D pad
+
+        //right
+        if (CM.par)
+        {
+            changetexture(rightObj, ActivatedMat);
+            Debug.Log("pressend");
+        }
+        else
+        {
+            changetexture(rightObj, IdleMat);
+        }
+
+        //left
+        if (CM.pal)
+        {
+            changetexture(leftObj, ActivatedMat);
+            Debug.Log("pressend");
+        }
+        else
+        {
+            changetexture(leftObj, IdleMat);
+        }
+
+        //up
+        if (CM.pau)
+        {
+            changetexture(upObj, ActivatedMat);
+            Debug.Log("pressend");
+        }
+        else
+        {
+            changetexture(upObj, IdleMat);
+        }
+
+        //down
+        if (CM.pad)
+        {
+            changetexture(downObj, ActivatedMat);
+            Debug.Log("pressend");
+        }
+        else
+        {
+            changetexture(downObj, IdleMat);
+        }
+
+        #endregion
     }
 
     private void changetexture(GameObject gm, Material m)
