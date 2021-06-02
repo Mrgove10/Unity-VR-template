@@ -1,10 +1,9 @@
 # Unity VR template
 
-This template is to set up VR in unity. Unity 2020 does work great. Also DX12 Seams to beark it.
-This uses the old depricated VR system, it does not use the new XR Manager.
+This template is to set up VR in unity with the new OpenXR Model !
 
-for :
-- Unity 2019.4
-- Depricated Vr system
-- OpenVR (SteamVR)
-- unity XR Interaction Toolkit
+Ror :
+- Unity 2021.1+
+- New VR system !
+- OpenXR 
+- XR Interaction Toolkit
