@@ -10,20 +10,30 @@ public class LocomotionController : MonoBehaviour
     public InputHelpers.Button teleportActivationButton;
     public float activationThreshold = 0.1f;
 
-    public bool EnableLeftTeleport { get; set; }= true;
-    public bool EnableRightTeleport { get; set; }= true;
-    
+    public bool EnableLeftTeleport { get; set; } = true;
+    public bool EnableRightTeleport { get; set; } = true;
+
+    public XRRayInteractor leftRayInteractor;
+    public XRRayInteractor rightRayInteractor;
+
     // Update is called once per frame
     void Update()
     {
+        Vector3 pos = new Vector3();
+        Vector3 norm = new Vector3();
+        int index = 0;
+        bool validTarget = false;
+        
         if (leftTeleportRay)
         {
-            leftTeleportRay.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(leftTeleportRay));
+            bool isLeftInteractoRayHovering = leftRayInteractor.TryGetHitInfo(out pos, out norm, out index, out validTarget);
+            leftTeleportRay.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(leftTeleportRay) && !isLeftInteractoRayHovering);
         }
 
         if (rightTeleportRay)
         {
-            rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay));
+            bool isRightInteractoRayHovering = rightRayInteractor.TryGetHitInfo(out pos, out norm, out index, out validTarget);
+            rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractoRayHovering);
         }
     }
 
